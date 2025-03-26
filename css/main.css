@@ -93,7 +93,80 @@ a:hover, a:focus, a:active {
 	color: #007AFF;
 	outline: 0;
 }
+/* Add these to your existing styles.css */
 
+/* Base responsive adjustments */
+body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Make the header responsive */
+header {
+    padding: 1rem 5%;
+}
+
+/* Responsive navigation */
+nav {
+    flex-wrap: wrap; /* Allow items to wrap on small screens */
+    gap: 1rem;
+    justify-content: center;
+}
+
+nav a {
+    padding: 0.5rem 1rem; /* More compact on mobile */
+}
+
+/* Profile section adjustments */
+.profile {
+    flex-direction: column; /* Stack vertically on mobile */
+    align-items: center;
+    text-align: center;
+    padding: 2rem 5%;
+}
+
+.profile img {
+    max-width: 200px; /* Limit image size */
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+/* Responsive project grid */
+.projects-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 0 5%;
+}
+
+.project-card {
+    min-width: 0; /* Prevent overflow */
+}
+
+/* Media Queries for specific breakpoints */
+@media (max-width: 768px) {
+    .profile-text h1 {
+        font-size: 2rem;
+    }
+    
+    .profile-text p {
+        font-size: 1rem;
+    }
+    
+    .skills-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile img {
+        max-width: 150px;
+    }
+}
 /**
  * ===================================================================
  * 03. typography & general theme styles - (_document-setup.scss)
