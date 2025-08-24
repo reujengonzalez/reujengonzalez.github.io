@@ -81,13 +81,15 @@ body {
  * links - (_document-setup.scss)
  * -------------------------------------------------------------------
  */
+/* Use browser default color for links */
 a, a:visited {
-	color: #000000;
+	/* No color set, so browser default applies */
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
+/* Removed extra closing brace */
 }
 a:hover, a:focus, a:active {
 	color: #007AFF;
@@ -586,6 +588,7 @@ fieldset {
 input[type="email"],
 input[type="number"],
 input[type="search"],
+input[type="search"],
 input[type="text"],
 input[type="tel"],
 input[type="url"],
@@ -597,7 +600,7 @@ select {
 	padding: 1.5rem 0;
 	border: 0;
 	outline: none;
-	vertical-align: middle;
+	/* vertical-align removed, not needed for block elements */
 	color: #313131;
 	font-family: "poppins-regular", sans-serif;
 	font-size: 1.5rem;
@@ -606,7 +609,6 @@ select {
 	background: transparent;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 	-moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
@@ -1500,7 +1502,9 @@ button::-moz-focus-inner, input::-moz-focus-inner {
  .carousel-content p {
 	font-size: 1rem;
 	color: #CCCCCC;
-	margin-bottom: 15px;
+	margin: 6px;
+	line-height: 1.8rem;
+	margin-left: 2px;
  }
  
  .carousel-buttons {
@@ -1535,36 +1539,39 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	background-color: #333333;
  }
  
- /* Carousel Navigation Buttons */
- .carousel-prev,
- .carousel-next {
-	position: absolute;
-	top: 50%;
+/* Floating Fixed Carousel Navigation Buttons */
+.carousel-prev,
+.carousel-next {
+	position: fixed; /* Floats on screen */
+	top: 50%; /* Middle of screen */
 	transform: translateY(-50%);
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(71, 71, 71, 0.5);
 	color: #FFFFFF;
 	border: none;
-	padding: 10px;
+	padding: 12px 15px;
 	font-size: 1.5rem;
 	cursor: pointer;
 	border-radius: 50%;
-	transition: background-color 0.3s ease;
-	z-index: 10;
- }
- 
- .carousel-prev:hover,
- .carousel-next:hover {
-	background-color: rgba(0, 0, 0, 0.8);
- }
- 
- .carousel-prev {
-	left: 20px;
- }
- 
- .carousel-next {
-	right: 20px;
- }
- 
+	transition: background-color 0.3s ease, transform 0.2s ease;
+	z-index: 9999; /* Always on top */
+}
+
+/* Hover effect */
+.carousel-prev:hover,
+.carousel-next:hover {
+	background-color: rgba(54, 9, 165, 0.8);
+	transform: translateY(-50%) scale(1.1);
+}
+
+/* Positioning */
+.carousel-prev {
+	left: 20px; /* Stick to left edge */
+}
+
+.carousel-next {
+	right: 20px; /* Stick to right edge */
+}
+
  /* Responsive Design */
  @media (max-width: 1024px) {
 	.carousel-item {
@@ -1719,7 +1726,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .contact-link {
-    color: #007AFF;
+    color: #007AFF;;
     font-size: 1.1rem;
     text-decoration: none;
     display: block;
@@ -2402,10 +2409,12 @@ header .row {
 	margin-right: 30px;
 }
 .intro-info .lead {
-	text-align: left;
-	padding-left: 15rem;
-	color: black;
+	text-align: center;
+	padding-left: 0;
+	color: #1a202c;
+	font-family: 'Lato', sans-serif;
 }
+
 
 .about-content {
 	position: relative;
@@ -2710,8 +2719,8 @@ header .row {
 .popup-modal .description-box p {
 	font-family: "poppins-regular", sans-serif;
 	font-size: 1.4rem;
-	line-height: 2.4rem;
-	margin-bottom: 12px;
+	line-height: 1.6rem;
+	margin-bottom: 6px;
 }
 .popup-modal .categories {
 	font-family: "poppins-bold", sans-serif;
@@ -3482,3 +3491,14 @@ html {
 	overflow-x: hidden;
   }
 /*# sourceMappingURL=main.css.map */
+
+/* Make carousel images smaller and fit inside the container */
+.carousel-item img {
+	display: block;
+	max-width: 90%;
+	height: auto;
+	margin: 0 auto;
+	margin-top: 15px;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
